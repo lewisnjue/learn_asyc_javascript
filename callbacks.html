@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>call backs </title>
+  </head>
+  <body>
+    <script>
+      // javascript goes here 
+      // call backs 
+      function fetchdata(url, callback){
+        const xhr  = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = function(){
+          if(this.status === 200){
+            callback(this.responseText);
+          } else {
+          console.log('error');
+        }
+        } 
+        xhr.send();
+      }
+      fetchdata('https://cors-anywhere.herokuapp.com/https://youtube.com/', function(data){
+        console.log(data);
+      }); // this is async example 
+
+     </script>
+  </body>
+</html>

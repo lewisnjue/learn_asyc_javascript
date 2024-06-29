@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async / awit</title>
+</head>
+<body>
+<script>
+    async function fetchData(url) {
+  try {
+    const response = await fetch(url); // Use the Fetch API for request
+    if (!response.ok) {
+      throw new Error(`Error fetching data: ${response.statusText}`);
+    }
+    const data = await response.json(); // Parse the JSON response using await
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+(async () => {
+  const data = await fetchData('https://api.example.com/data');
+  console.log('Fetched data:', data);
+  // Use the fetched data here
+})();
+
+</script>
+</body>
+</html>
